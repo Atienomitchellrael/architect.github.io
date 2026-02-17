@@ -1,0 +1,518 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Apex | Architecture & design</title>
+    <!-- Google Fonts & Font Awesome for clean typography and icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* header / navigation */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(6px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo a {
+            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: #1a1a1a;
+            border-left: 5px solid #b8865b;
+            padding-left: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #b8865b;
+        }
+
+        /* hero section with large image */
+        .hero {
+            margin: 40px 0 60px;
+            border-radius: 24px;
+            overflow: hidden;
+            max-height: 600px;
+            background: #ddd;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.9);
+        }
+
+        /* section headings */
+        .section-heading {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #b8865b;
+            margin-top: 12px;
+        }
+
+        /* services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px -12px rgba(0, 0, 0, 0.15);
+            border-color: #eae2d7;
+        }
+
+        .service-icon {
+            font-size: 2.4rem;
+            color: #b8865b;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: #4f4f4f;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* gallery / portfolio pictures */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            transition: scale 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            scale: 1.02;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* contact & info row */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            border-radius: 32px;
+            padding: 48px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+        }
+
+        .contact-info {
+            flex: 2;
+            min-width: 260px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .info-item i {
+            font-size: 1.6rem;
+            width: 40px;
+            color: #b8865b;
+        }
+
+        .info-item p, .info-item a {
+            font-size: 1.1rem;
+            color: #333;
+            text-decoration: none;
+            font-weight: 400;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .info-item a:hover {
+            border-bottom: 1px solid #b8865b;
+        }
+
+        .studio-image {
+            flex: 1.2;
+            min-width: 240px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .studio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        /* contact form (simple, with picture context) */
+        .form-block {
+            margin: 48px 0 40px;
+        }
+
+        .form-block h4 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .inline-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .inline-form input {
+            flex: 1 1 220px;
+            padding: 16px 20px;
+            border: 1px solid #dadada;
+            border-radius: 60px;
+            font-size: 1rem;
+            background: #fff;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .inline-form input:focus {
+            border-color: #b8865b;
+        }
+
+        .btn {
+            background: #b8865b;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 6px 16px rgba(184, 134, 91, 0.15);
+        }
+
+        .btn:hover {
+            background: #a5714a;
+            transform: scale(0.98);
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid #eaeaea;
+            padding: 32px 0;
+            margin-top: 20px;
+            color: #5f5f5f;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links i {
+            font-size: 1.4rem;
+            margin-left: 20px;
+            color: #4f4f4f;
+            transition: color 0.2s;
+        }
+
+        .social-links i:hover {
+            color: #b8865b;
+        }
+
+        /* responsive */
+        @media (max-width: 800px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-row {
+                flex-direction: column;
+            }
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                gap: 16px;
+            }
+            .nav-links {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* small decorative */
+        .arch-tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #5c5c5c;
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <div class="logo"><a href="#">ATELIER APEX</a></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+                <a href="#studio">Studio</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- hero picture (large format) -->
+        <div class="hero">
+            <img src="https://images.pexels.com/photos/443383/pexels-photo-443383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                 alt="modern architecture building facade with clean lines">
+        </div>
+
+        <!-- introduction / tagline -->
+        <div class="arch-tagline">
+            <p>Atelier Apex is a full‑service architecture studio rooted in timeless materials, daylight, and contemporary form. We design spaces that breathe.</p>
+        </div>
+
+        <!-- SERVICES SECTION (with icons) -->
+        <section id="services">
+            <h2 class="section-heading">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>Concept design</h3>
+                    <p>Early feasibility, massing studies, and client vision workshops — setting the DNA of your project.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>Development</h3>
+                    <p>Technical drawings, material selection, and coordination with engineers. We bridge idea and reality.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Sustainable design</h3>
+                    <p>Passive strategies, low‑carbon materials, and energy modelling for beautiful, responsible buildings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>Construction admin</h3>
+                    <p>Site visits, contractor Q&A, and quality control until the last stone is set.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY / PICTURES (portfolio) -->
+        <section id="gallery">
+            <h2 class="section-heading">Selected projects</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/280207/pexels-photo-280207.jpeg?auto=compress&cs=tinysrgb&w=600" alt="concrete house with large windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600" alt="minimalist wooden interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2872918/pexels-photo-2872918.jpeg?auto=compress&cs=tinysrgb&w=600" alt="staircase with skylight">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=600" alt="stone wall and glass facade">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3797991/pexels-photo-3797991.jpeg?auto=compress&cs=tinysrgb&w=600" alt="architectural detail in wood">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3935338/pexels-photo-3935338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="open plan living with concrete pillar">
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT + INFO + STUDIO PICTURE (combined) -->
+        <section id="contact">
+            <h2 class="section-heading">Contact &amp; studio</h2>
+
+            <div class="contact-row">
+                <!-- left side: contact details & quick form -->
+                <div class="contact-info">
+                    <h3>Let's talk about your project</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-pin"></i>
+                        <p>25 Bedford Square, London WC1B 3HH</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+442079462700">+44 (0)20 7946 2700</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:studio@apexarch.com">studio@apexarch.com</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Mon–Fri 9am–6pm, or by appointment</p>
+                    </div>
+
+                    <!-- small form embedded (simple request) -->
+                    <div class="form-block">
+                        <h4>Request a consultation</h4>
+                        <div class="inline-form">
+                            <input type="text" placeholder="Your name" aria-label="name">
+                            <input type="email" placeholder="Email address" aria-label="email">
+                            <button class="btn" type="submit">Send</button>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 12px; color: #777;">We’ll reply within 48h — no spam, ever.</p>
+                    </div>
+                </div>
+
+                <!-- right side: studio picture -->
+                <div class="studio-image">
+                    <img src="https://images.pexels.com/photos/5591585/pexels-photo-5591585.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="bright architecture studio with models and drawings">
+                </div>
+            </div>
+        </section>
+
+        <!-- subtle extra image + call to visit -->
+        <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 40px;">
+            <i class="fas fa-arrow-right" style="color: #b8865b; font-size: 1.4rem;"></i>
+            <span style="font-weight: 300;">Visit our studio by appointment – we love to discuss materials over coffee.</span>
+        </div>
+    </main>
+
+    <footer class="container">
+        <div>© 2025 Atelier Apex — architecture for people and place</div>
+        <div class="social-links">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-pinterest"></i>
+        </div>
+    </footer>
+
+    <!-- tiny note: all images from pexels (free to use, architect/space related) -->
+</body>
+</html>
+Design Philosophy & Visual Highlights
+This page balances a clean, professional aesthetic with visual warmth to reflect your architectural brand.
+
+Structured Visual Narrative: The layout guides visitors from a striking hero image through your core services, then to a project gallery, and finally to contact details—creating a logical story about your work.
+
+Tactile & Modern Details: Subtle shadows, smooth hover effects on cards and images, and a warm accent color (#b8865b) for icons and underlines add depth and a sense of crafted quality, mirroring architectural details.
+
+Clear Information Hierarchy: Generous spacing, distinct section headings with a signature underline, and the combined contact/studio row ensure that services, visuals, and ways to reach you are immediately scannable and inviting.
+
+Optimization Tip: You can replace the src URLs for all images (in the hero, gallery, and studio sections) with your own project photos for a personalized touch.
+
+
