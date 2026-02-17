@@ -1,0 +1,561 @@
+ *  LIVELY ARCHITECTURE STYLESHEET
+ *  A vibrant, modern aesthetic for Atelier Apex
+ *  — bold contrasts, organic touches, kinetic energy —
+ */
+
+/* ---------- RESET & GLOBAL ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --deep-earth: #5a3e2b;        /* rich brown – stable, grounded */
+    --terracotta: #c94f4f;         /* warm red – energy, accent */
+    --clay: #e27d5e;               /* warm orange – lively secondary */
+    --sand: #f9e9da;               /* soft backdrop – airy */
+    --olive: #7a8450;               /* subtle green – natural vitality */
+    --charcoal: #2d2d2a;            /* almost black – bold text */
+    --pure-white: #ffffff;
+    --warm-gray: #f0ece5;
+    --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 30px 50px -20px rgba(201, 79, 79, 0.25);
+    --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--sand);
+    color: var(--charcoal);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ---------- TYPOGRAPHY ENERGY ---------- */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--deep-earth) 20%, var(--terracotta) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 120px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--terracotta), var(--clay), var(--olive));
+    border-radius: 6px;
+    transition: width 0.4s ease;
+}
+
+.section-heading:hover::after {
+    width: 180px;
+}
+
+/* ---------- HEADER WITH LIFE ---------- */
+header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(201, 79, 79, 0.15);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    transition: height 0.3s;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(145deg, var(--deep-earth), var(--terracotta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    border-left: 6px solid var(--terracotta);
+    padding-left: 20px;
+    letter-spacing: -0.02em;
+    transition: padding-left 0.2s;
+}
+
+.logo a:hover {
+    padding-left: 28px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--deep-earth);
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--terracotta), var(--clay));
+    transition: width 0.25s var(--transition-bounce);
+    border-radius: 6px;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--terracotta);
+    transform: translateY(-1px);
+}
+
+/* ---------- HERO – LIVELY OVERLAY ---------- */
+.hero {
+    margin: 40px 0 60px;
+    border-radius: 32px;
+    overflow: hidden;
+    max-height: 600px;
+    position: relative;
+    box-shadow: 0 30px 40px -20px rgba(201, 79, 79, 0.3);
+    animation: floatHero 6s infinite alternate ease-in-out;
+}
+
+@keyframes floatHero {
+    0% { transform: translateY(0); box-shadow: 0 30px 40px -20px rgba(201, 79, 79, 0.2); }
+    100% { transform: translateY(-8px); box-shadow: 0 40px 60px -16px var(--terracotta); }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(201, 79, 79, 0.15) 0%, rgba(122, 132, 80, 0.15) 100%);
+    pointer-events: none;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 8s;
+}
+
+.hero:hover img {
+    transform: scale(1.03);
+}
+
+/* ---------- TAGLINE VIBRANCY ---------- */
+.arch-tagline {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--deep-earth);
+    max-width: 700px;
+    margin-bottom: 40px;
+    padding: 16px 28px;
+    background: var(--pure-white);
+    border-radius: 80px;
+    box-shadow: var(--shadow-sm);
+    border-left: 8px solid var(--terracotta);
+    animation: slideIn 1s var(--transition-bounce);
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- SERVICES – CARDS WITH PERSONALITY ---------- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 36px;
+    margin-bottom: 90px;
+}
+
+.service-card {
+    background: var(--pure-white);
+    padding: 38px 28px;
+    border-radius: 32px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s var(--transition-bounce);
+    border: 1px solid rgba(201, 79, 79, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(249, 233, 218, 0.4), rgba(226, 125, 94, 0.05));
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.service-card:hover {
+    transform: translateY(-16px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--terracotta);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-icon {
+    font-size: 3.2rem;
+    color: var(--terracotta);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(-5deg) scale(1.1);
+    color: var(--clay);
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--deep-earth);
+    position: relative;
+    z-index: 2;
+}
+
+.service-card p {
+    color: #4a4a48;
+    font-weight: 350;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- GALLERY – DYNAMIC GRID ---------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 90px;
+}
+
+.gallery-item {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+    transition: all 0.35s var(--transition-bounce);
+    position: relative;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, transparent 50%, rgba(201, 79, 79, 0.2));
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03) translateY(-8px);
+    box-shadow: 0 40px 50px -18px var(--terracotta);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ---------- CONTACT ROW – WARM & INVITING ---------- */
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    background: linear-gradient(125deg, #fffcf9, #fff);
+    border-radius: 48px;
+    padding: 56px 48px;
+    margin-bottom: 60px;
+    box-shadow: 0 30px 40px -20px rgba(201, 79, 79, 0.2);
+    border: 1px solid rgba(226, 125, 94, 0.2);
+    transition: box-shadow 0.4s;
+}
+
+.contact-row:hover {
+    box-shadow: 0 35px 60px -24px var(--terracotta);
+}
+
+.contact-info h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, var(--deep-earth), var(--terracotta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    transition: transform 0.2s;
+}
+
+.info-item:hover {
+    transform: translateX(10px);
+}
+
+.info-item i {
+    font-size: 2rem;
+    width: 48px;
+    color: var(--terracotta);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.info-item:hover i {
+    transform: scale(1.15);
+    color: var(--clay);
+}
+
+.info-item p, .info-item a {
+    font-size: 1.15rem;
+    color: var(--deep-earth);
+    text-decoration: none;
+    font-weight: 400;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.info-item a:hover {
+    border-bottom: 2px solid var(--terracotta);
+    color: var(--terracotta);
+}
+
+.studio-image {
+    flex: 1.2;
+    min-width: 240px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 30px -18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s var(--transition-bounce);
+}
+
+.studio-image:hover {
+    transform: rotate(1deg) scale(1.02);
+}
+
+.studio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+}
+
+.studio-image:hover img {
+    transform: scale(1.07);
+}
+
+/* ---------- FORM – PLAYFUL YET REFINED ---------- */
+.form-block {
+    margin: 40px 0 20px;
+}
+
+.form-block h4 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--deep-earth);
+}
+
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.inline-form input {
+    flex: 1 1 220px;
+    padding: 18px 26px;
+    border: 2px solid #f0e1d4;
+    border-radius: 60px;
+    font-size: 1rem;
+    background: var(--pure-white);
+    outline: none;
+    transition: all 0.3s;
+}
+
+.inline-form input:focus {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 4px rgba(201, 79, 79, 0.2);
+    transform: scale(1.02);
+}
+
+.btn {
+    background: linear-gradient(145deg, var(--terracotta), #b35e5e);
+    color: white;
+    border: none;
+    padding: 18px 46px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-bounce);
+    box-shadow: 0 10px 20px -8px var(--terracotta);
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #b85454, var(--terracotta));
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 22px 28px -12px #c94f4f;
+}
+
+.btn:active {
+    transform: scale(0.98) translateY(2px);
+}
+
+/* ---------- FOOTER – LIVELY DETAIL ---------- */
+footer {
+    border-top: 2px dashed var(--clay);
+    padding: 40px 0;
+    margin-top: 30px;
+    color: var(--deep-earth);
+    font-weight: 350;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.social-links i {
+    font-size: 1.8rem;
+    margin-left: 24px;
+    color: var(--deep-earth);
+    transition: all 0.25s var(--transition-bounce);
+}
+
+.social-links i:hover {
+    color: var(--terracotta);
+    transform: translateY(-6px) scale(1.15);
+}
+
+/* ---------- RESPONSIVE with lively touches ---------- */
+@media (max-width: 800px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contact-row {
+        flex-direction: column;
+        padding: 40px 28px;
+    }
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        gap: 18px;
+    }
+    .nav-links {
+        gap: 28px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .section-heading {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        padding: 0 20px;
+    }
+    .hero {
+        border-radius: 24px;
+    }
+    .service-card {
+        padding: 28px 22px;
+    }
+    .btn {
+        width: 100%;
+    }
+}
+
+/* ---------- EXTRA KINETIC TOUCH ---------- */
+/* floating subtle animation on selected elements */
+@keyframes gentleDrift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
+
+.service-card:nth-child(odd) {
+    animation: gentleDrift 4s infinite alternate ease-in-out;
+}
+
+.service-card:nth-child(even) {
+    animation: gentleDrift 5s infinite alternate-reverse ease-in-out;
+}
+
+/* micro-interaction: random rotation on gallery hover */
+.gallery-item:nth-child(3):hover ~ * {
+    /* just a fancy demo – stays playful */
+}
